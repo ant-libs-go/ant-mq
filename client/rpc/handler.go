@@ -10,7 +10,7 @@ package client
 import (
 	"fmt"
 
-	"ant-mq/client"
+	"github.com/ant-libs-go/ant-mq/client"
 )
 
 type Handler struct{}

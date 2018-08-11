@@ -15,7 +15,7 @@ import (
 	"net"
 	"net/rpc"
 
-	"ant-mq/client"
+	"github.com/ant-libs-go/ant-mq/client"
 )
 
 type rpcClient struct {

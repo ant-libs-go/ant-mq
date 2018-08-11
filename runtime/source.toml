@@ -1,0 +1,48 @@
+# topic的管理
+[topic]
+	[topic.aaa]
+		persistFirst=true           # 持久化优先还是Pub优先。未支持
+		persistDb="file://xxx.out"  # 持久化方案，默认不持久化，格式：协议://info。可选协议file。未支持
+	[topic.bbb]
+		persistFirst=true           
+		persistDb="file://xxx.out" 
+
+# 订阅者管理
+[subscriber]
+	[subscriber.xxx]
+		addrs=["127.0.0.1:8083","127.0.0.1:8084"]
+		selector="random" # Pub策略，可选all,random
+		timeout=3         # Pub超时时间，单位second
+		retry=3           # 重试次数，默认为0，一直重试。当addrs较多且为random时，建议指定较大值
+	[subscriber.yyy]
+		addrs=["127.0.0.1:8085"]
+		selector="random" 
+		timeout=3     
+		retry=3        
+
+# 订阅关系管理
+[relation]
+	[relation.aaa-xxx]
+		topic="aaa"
+		subscriber="yyy"
+		downPersistDb="file://xxx.out"  # topic不持久化&订阅者下线时是否持久化，默认不持久化，格式：协议://info。可选协议file。未支持
+		addrs=["127.0.0.1:8083", "127.0.0.1:8084"]
+		selector="random" # Pub策略，可选all,random
+		timeout=3         # Pub超时时间，单位second
+		retry=3           # 重试次数，默认为0，一直重试
+	[relation.aaa-yyy]
+		topic="aaa"
+		subscriber="yyy"
+		downPersistDb="file://xxx.out"  # topic不持久化&订阅者下线时是否持久化，默认不持久化，格式：协议://info。可选协议file。未支持
+		addrs=["127.0.0.1:8085"]
+		selector="random" # Pub策略，可选all,random
+		timeout=3         # Pub超时时间，单位second
+		retry=3           # 重试次数，默认为0，一直重试
+	[relation.bbb-xxx]
+		topic="bbb"
+		subscriber="xxx"
+		downPersistDb="file://xxx.out" 
+		addrs=["",""]
+		selector="all" 
+		timeout=10     
+		retry=3        

@@ -43,7 +43,7 @@ func init() {
 	if *pwd == "" {
 		*pwd, _ = os.Getwd()
 	}
-	os.Setenv("VERSION", "1.0.0")
+	os.Setenv("VERSION", "1.0.1")
 	os.Setenv("WORKDIR", *pwd)
 
 	if *interactive && (*register || *deregister) && (len(*topic) == 0 && len(*subscriber) == 0) {
